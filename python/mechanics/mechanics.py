@@ -35,7 +35,7 @@ class Mechanic:
         self.cars: list[int] = []
 
     def queue(self, car: int) -> None:
-        self.cars.append(car)
+        self.cars.insert(0, car)
 
     def waiting_time(self, total: bool = False) -> int:
         """
@@ -64,18 +64,10 @@ class Workshop:
         return pivot
 
     def distribute(self, cars: list[int]) -> Workshop:
-        cars = sorted(cars)
-
-        # Slowest mechanic picks shortest car.
-        for m in self.mechanics:
-            m.queue(cars.pop(0))
-        LOG.debug(f'After initial queuing: {self.mechanics}')
-
-        # For each remaining car: pick the mechanic with shortest expected
-        # waiting time.
+        cars = sorted(cars, reverse=True)
         for car in cars:
             self._pick_mechanic.queue(car)
-        LOG.debug(f'After final queuing: {self.mechanics}')
+        LOG.debug(f'After queuing: {self.mechanics}')
         return self
 
     @property

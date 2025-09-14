@@ -10,6 +10,5 @@ from mechanics.mechanics import Workshop
 def test_mechanics(cars, factors, expected):
     print(f'\nDistributing {cars} to {factors}')
     w = Workshop(factors).distribute(cars)
-    w.report(print)
-    return
+    # w.report(print)
     assert w.total == expected
