@@ -2,7 +2,7 @@
 name = "mechanics"
 version = "0.1.0"
 authors = ["CK"]
-# description = "mechanipoetry-experiments"
+description = "mechanics"
 packages = [{ include = "mechanics" }, ]
 
 [tool.poetry.dependencies]
